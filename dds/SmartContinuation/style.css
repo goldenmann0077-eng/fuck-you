@@ -1,0 +1,16 @@
+/* Smart Continuation & Smart Regenerate — minimal panel styling */
+#smart_continuation_panel .sc-status {
+    margin: 0.5em 0;
+    overflow-wrap: anywhere;
+}
+#smart_continuation_panel .sc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    margin: 0.6em 0;
+}
+#smart_continuation_panel .sc-note {
+    opacity: 0.8;
+    font-size: 0.9em;
+    margin-top: 0.8em;
+}

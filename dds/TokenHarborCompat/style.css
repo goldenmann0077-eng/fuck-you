@@ -1,0 +1,10 @@
+.token-harbor-status {
+    margin-top: 8px;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+#token_harbor_compat_settings small {
+    display: block;
+    margin: 8px 0;
+    opacity: 0.8;
+}

@@ -1,0 +1,40 @@
+<div class="crs-settings">
+  <div class="inline-drawer">
+    <div class="inline-drawer-toggle inline-drawer-header">
+      <b>Character Research Studio 0.4.12</b>
+      <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+    </div>
+    <div class="inline-drawer-content">
+      <div class="crs-panel">
+        <p class="crs-intro">Global Web Search task execution for any character or bot. Knowledge-seeking questions such as “Do you know anything about…?”, “What can you tell me about…?”, “Tell me more”, and explicit search commands can trigger research before generation. The extension resolves vague follow-ups against conversation history, then injects a subject-scoped evidence attachment. You can manually review any latest response using the Review button below.</p>
+        <label><input id="crs-enabled" type="checkbox" checked> Enable automatic research and task execution</label>
+        <label><input id="crs-forceWebSearchTask" type="checkbox" checked> Force explicit Web Search tasks to run (resolve subject from conversation and bypass intent gate)</label>
+        <label><input id="crs-nsfw" type="checkbox" checked> Include relevant publicly documented adult / NSFW professional information (SafeSearch off)</label>
+        <label><input id="crs-use-local-proxy" type="checkbox" checked> Use Cloudflare / local search gateway</label>
+        <label>Cloudflare Worker gateway URL (include secret path)</label>
+        <input id="crs-local-proxy-url" class="text_pole" type="url" value="http://127.0.0.1:3030">
+        <small>Paste the full Worker base URL including its secret path segment. Do not append /search or /fetch. The same gateway handles search and page retrieval.</small>
+        <label>SearXNG instance URL (used by direct mode only)</label>
+        <input id="crs-searxng-url" class="text_pole" type="url" placeholder="https://www.isci.si/">
+        <small>Use the instance homepage or a page on the same SearXNG instance. JSON output must be enabled. The companion server must have JSON output enabled on its configured instance. Direct mode additionally requires browser CORS.</small>
+        <label>Default detail level</label>
+        <select id="crs-detail" class="text_pole">
+          <option value="extensive">Extensive</option>
+          <option value="maximum">Maximum practical detail</option>
+          <option value="balanced">Balanced</option>
+        </select>
+        <div class="crs-checks">
+          <label><input id="crs-opening" type="checkbox" checked> Include RP opening by default</label>
+          <label><input id="crs-summary" type="checkbox" checked> Include quick reference by default</label>
+          <label><input id="crs-sources" type="checkbox" checked> Include source ledger and confidence labels</label>
+        </div>
+        <button id="crs-test-search-button" class="menu_button" type="button">Test search gateway</button>
+        <button id="crs-diagnostics-button" class="menu_button" type="button">View technical diagnostics (works without generation)</button>
+        <button id="crs-review-button" class="menu_button" type="button">Review latest generation</button>
+        <div class="crs-status">v0.4.10: includes a structured three-document generation contract and worked prose examples; quiet review generations are ignored so they cannot overwrite the original generation diagnostics. Review is manual. The technical log records subject recovery, context filtering, URL selection, query planning, each search attempt, page extraction, packet creation, injection, and the exact stage of any failure.</div>
+        <p class="crs-note"><b>Provider limits:</b> This extension does not replace, disable, or override OpenRouter, DeepSeek, or provider-side safety systems. It can detect visible refusal/omission patterns after generation, but cannot inspect hidden moderation decisions or guarantee why a provider rejected a request. NSFW mode only disables SearXNG SafeSearch; it does not disable model/provider restrictions.</p>
+        <p class="crs-note"><b>Page access:</b> The extension attempts to fetch and extract text from search-result pages. Many sites block browser CORS requests; those will be reported as blocked and the search snippets remain available. It does not bypass logins, paywalls, CAPTCHAs, or site restrictions. No fallback to SillyTavern Web Search is performed. Explicit Web Search task mode bypasses the automatic intent detector. Commands such as “search now”, “try again”, “force it”, and “search anyway” reuse the subject from prior user messages. If no subject can be recovered, the extension reports that specifically instead of sending a meaningless query. A research packet is still injected when search attempts fail, so the model can report the failure honestly. Only subject-matched URLs are selected; the retrieval cap is enforced. Context sent in the evidence packet is restricted to user messages that match the resolved subject, plus the current request. Search requests use the configured Cloudflare Worker gateway (or the local proxy). The gateway URL must include its secret path segment; /health should return ok:true. Search requests are throttled to four concurrent queries.</p>
+      </div>
+    </div>
+  </div>
+</div>

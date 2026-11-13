@@ -1,0 +1,12 @@
+{
+  "display_name": "Smart Continuation & Smart Regenerate",
+  "loading_order": 20,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "OpenAI (custom for user)",
+  "version": "0.5.20",
+  "minimum_client_version": "1.19.0",
+  "generate_interceptor": "smartContinuationInterceptor"
+}

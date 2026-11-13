@@ -1,0 +1,33 @@
+<div id="mc-extension" class="wide100p">
+  <div class="inline-drawer">
+    <div class="inline-drawer-toggle inline-drawer-header">
+      <b>Model Capabilities</b>
+      <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+    </div>
+    <div class="inline-drawer-content">
+      <p class="notes">Inspect models currently exposed by the active SillyTavern connection. This extension does not assume that a model is available just because it appears in an old catalogue.</p>
+      <div class="mc-actions">
+        <button id="mc-open" class="menu_button">Open Model Capabilities</button>
+        <button id="mc-refresh" class="menu_button">Refresh models</button>
+      </div>
+      <div id="mc-status" class="notes">Waiting for the active API model selector…</div>
+    </div>
+  </div>
+</div>
+<div id="mc-modal" class="mc-modal" aria-hidden="true">
+  <div class="mc-dialog">
+    <div class="mc-header">
+      <div><h3>Model Capabilities</h3><div id="mc-provider" class="notes">Current SillyTavern connection</div></div>
+      <button id="mc-close" class="menu_button">Close</button>
+    </div>
+    <div class="mc-toolbar">
+      <input id="mc-search" type="search" placeholder="Filter model names…" />
+      <select id="mc-filter"><option value="all">All discovered models</option><option value="available">Currently listed</option><option value="tested">Personally tested</option></select>
+      <button id="mc-copy-visible" class="menu_button">Copy visible names</button>
+      <button id="mc-copy-all" class="menu_button">Copy all names</button>
+    </div>
+    <div id="mc-summary" class="notes"></div>
+    <div id="mc-list" class="mc-list"></div>
+    <div class="mc-foot notes">Availability is read from the live model controls in SillyTavern. Capability and policy fields are marked Unknown unless supported by verified metadata or your own test. No API key is read, stored, or transmitted.</div>
+  </div>
+</div>
